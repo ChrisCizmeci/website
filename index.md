@@ -50,9 +50,10 @@ body{
 </style>
 
 <body>
-<h1 class="banner"> Hello, I'm Chris Cizmeciyan. <br> I'm a student at Cornell University. <br/></div>
-<h1 class="intro"> I have 4 years of genetics laboratory experience and I love learning new languages.<br/>‍
-</br>I value <b>truth</b> and <b>empathy</b> above all else.<br/></div></div>
+<h1 class="banner"> Hello, I'm Chris Cizmeciyan. <br> I'm a student at Cornell University. <br/>
+<h1 class="intro"> I have 4 years of genetics laboratory experience and I love learning new languages,
+</br>I value truth and empathy above all else.
+</div></div>
 </h1></h1>
 
 <center>
