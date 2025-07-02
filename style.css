@@ -1,0 +1,145 @@
+@font-face {
+  font-family: 'Monomakh'; /* The name you will use to reference the font */
+  src: url('fonts/Monomakh-Regular.woff2') format('woff2'); /* Path to your font file */
+  font-weight: 400; /* Corresponds to 'regular' */
+  font-style: normal;
+}
+
+/* General Body Styles */
+body {
+    font-family: 'Monomakh', sans-serif; /* APPLY THE FONT HERE (with a fallback) */
+    margin: 0;
+    background-color: #ffffff;
+    color: #1a1a1a;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Dark Theme */
+body.dark-mode {
+    background-color: #1a1a1a;
+    color: #ffffff;
+}
+
+/* Header and Navigation */
+header {
+    padding: 20px 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+nav {
+    /* No styles needed here anymore for positioning */
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    margin: 0;
+    padding: 0;
+}
+
+nav a {
+    text-decoration: none;
+    color: inherit;
+    font-weight: bold;
+}
+
+/* Position logo on the left */
+.logo {
+    position: absolute;
+    left: 50px;
+    top: 50%;
+    transform: translateY(-50%); /* Ensures perfect vertical centering */
+}
+
+.logo a {
+    font-size: 1.5em;
+    font-weight: bold;
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Position theme switcher on the right */
+#theme-switcher {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    width: 32px;
+    height: 32px;
+    position: absolute; /* Change from relative to absolute */
+    right: 50px;
+    top: 50%;
+    transform: translateY(-50%); /* Ensures perfect vertical centering */
+}
+
+#theme-switcher img {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+#theme-switcher .moon-icon {
+    opacity: 0;
+}
+
+body.dark-mode #theme-switcher .sun-icon {
+    opacity: 0;
+}
+
+body.dark-mode #theme-switcher .moon-icon {
+    opacity: 1;
+}
+
+/* Hero Section */
+.hero {
+    text-align: center;
+    padding: 100px 20px;
+}
+
+.hero h1 {
+    font-size: 3em;
+    margin: 0;
+}
+
+/* Asymmetric Gallery */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.gallery-item {
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Spanning items for the asymmetric look */
+.gallery-item:nth-child(2) {
+    grid-column: span 2;
+}
+
+.gallery-item:nth-child(4) {
+    grid-row: span 2;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    margin-top: 50px;
+}
