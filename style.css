@@ -1,17 +1,20 @@
-@font-face {
-  font-family: 'Monomakh'; /* The name you will use to reference the font */
-  src: url('fonts/Monomakh-Regular.woff2') format('woff2'); /* Path to your font file */
-  font-weight: 400; /* Corresponds to 'regular' */
-  font-style: normal;
-}
-
 /* General Body Styles */
 body {
-    font-family: 'Monomakh', sans-serif; /* APPLY THE FONT HERE (with a fallback) */
+    font-family: "EB Garamond", serif;
+    font-weight: 400;
     margin: 0;
     background-color: #ffffff;
     color: #1a1a1a;
     transition: background-color 0.3s, color 0.3s;
+}
+
+/* Base style for Material Symbols */
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24
 }
 
 /* Dark Theme */
@@ -29,10 +32,6 @@ header {
     position: relative;
 }
 
-nav {
-    /* No styles needed here anymore for positioning */
-}
-
 nav ul {
     list-style: none;
     display: flex;
@@ -44,7 +43,7 @@ nav ul {
 nav a {
     text-decoration: none;
     color: inherit;
-    font-weight: bold;
+    font-weight: 500;
 }
 
 /* Position logo on the left */
@@ -52,12 +51,12 @@ nav a {
     position: absolute;
     left: 50px;
     top: 50%;
-    transform: translateY(-50%); /* Ensures perfect vertical centering */
+    transform: translateY(-50%);
 }
 
 .logo a {
     font-size: 1.5em;
-    font-weight: bold;
+    font-weight: 500;
     text-decoration: none;
     color: inherit;
 }
@@ -70,19 +69,21 @@ nav a {
     padding: 0;
     width: 32px;
     height: 32px;
-    position: absolute; /* Change from relative to absolute */
+    position: absolute;
     right: 50px;
     top: 50%;
-    transform: translateY(-50%); /* Ensures perfect vertical centering */
+    transform: translateY(-50%);
 }
 
-#theme-switcher img {
-    width: 100%;
-    height: 100%;
+/* Icon Styles */
+#theme-switcher .material-symbols-outlined {
     position: absolute;
-    top: 0;
-    left: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     transition: opacity 0.3s ease-in-out;
+    color: inherit;
+    font-size: 28px;
 }
 
 #theme-switcher .moon-icon {
@@ -93,8 +94,11 @@ body.dark-mode #theme-switcher .sun-icon {
     opacity: 0;
 }
 
+/* MODIFIED RULE FOR MOON ICON */
 body.dark-mode #theme-switcher .moon-icon {
     opacity: 1;
+    color: #ffffff;
+    /* The font-variation-settings rule has been removed to use the default outline style */
 }
 
 /* Hero Section */
@@ -106,6 +110,13 @@ body.dark-mode #theme-switcher .moon-icon {
 .hero h1 {
     font-size: 3em;
     margin: 0;
+    font-weight: 600;
+}
+
+.hero p {
+    font-weight: 500;
+    font-style: italic;
+    font-size: 1.25rem;
 }
 
 /* Asymmetric Gallery */
