@@ -212,7 +212,7 @@ footer {
 /* Mobile Styles             */
 /* =================================== */
 
-@media (max-width: 768px) {
+@media (max-width: 1400px) {
     
     /* Change the header to a vertical layout on mobile */
     header {
