@@ -54,18 +54,17 @@ nav a {
     left: 25px;
     top: 50%;
     transform: translateY(-50%);
-    cursor: pointer; /* Make it clear the logo is clickable */
+    cursor: pointer;
 }
 
 .logo a {
     font-weight: 500;
     text-decoration: none;
     color: inherit;
-    position: relative; /* Create a positioning context for the names */
+    position: relative;
     display: inline-block;
 }
 
-/* NEW: Styles for the name toggle */
 .logo .name-en,
 .logo .name-hy {
     transition: opacity 0.1s ease-in-out;
@@ -76,18 +75,18 @@ nav a {
     position: absolute;
     top: 0;
     left: 0;
-    opacity: 0; /* Hidden by default */
+    opacity: 0;
 }
 
 .logo.toggled .name-en {
-    opacity: 0; /* Hide English name when toggled */
+    opacity: 0;
 }
 
 .logo.toggled .name-hy {
-    opacity: 1; /* Show Armenian name when toggled */
+    opacity: 1;
 }
 
-/* Position theme switcher on the right */
+/* ---- MODIFIED THEME SWITCHER ---- */
 #theme-switcher {
     background: none;
     border: none;
@@ -95,10 +94,10 @@ nav a {
     padding: 0;
     width: 32px;
     height: 32px;
-    position: absolute;
-    right: 15px;
-    top: 50%;
-    transform: translateY(-50%);
+    position: fixed;      /* Fixes position relative to the viewport */
+    top: 30px;            /* Distance from the top of the window */
+    right: 30px;          /* Distance from the right of the window */
+    z-index: 1000;        /* Ensures it stays on top of other content */
 }
 
 /* Icon Styles */
@@ -110,6 +109,11 @@ nav a {
     transition: opacity 0.1s ease-in-out;
     color: inherit;
     font-size: 28px;
+}
+
+/* Retained update: Make the sun icon black in light mode */
+#theme-switcher .sun-icon {
+    color: #000000;
 }
 
 #theme-switcher .moon-icon {
@@ -135,25 +139,24 @@ body.dark-mode #theme-switcher .moon-icon {
     font-size: 3em;
     margin: 0;
     font-weight: 600;
-    color: #255dc4; /* Navy blue for light mode */
+    color: #255dc4;
     transition: color 0.3s ease-in-out;
 }
 
-/* New rule for h1 in dark mode */
 body.dark-mode .hero h1 {
-    color: #e6785c; /* Pastel peach for dark mode */
+    color: #e6785c;
 }
 
 .hero p {
     font-weight: 500;
     font-style: italic;
     font-size: 1.5rem;
-    color: #e6785c; /* Navy blue for light mode */
+    color: #e6785c;
     transition: color 0.3s ease-in-out;
 }
 
 body.dark-mode .hero p {
-    color: #5282d9; /* Pastel peach for dark mode */
+    color: #5282d9;
 }
 
 /* Asymmetric Gallery */
@@ -179,24 +182,24 @@ body.dark-mode .hero p {
 
 /* Spanning rule for landscape images */
 .gallery-item.landscape {
-    grid-column: span 2; /* Makes it wider */
-    grid-row: span 2;    /* Makes it taller */
+    grid-column: span 2;
+    grid-row: span 2;
 }
 
 .gallery-item.landscape2 {
-    grid-column: span 1; /* Makes it wider */
-    grid-row: span 1;    /* Makes it taller */
+    grid-column: span 1;
+    grid-row: span 1;
 }
 
 .gallery-item.landscape3 {
-    grid-column: span 2; /* Makes it wider */
-    grid-row: span 1;    /* Makes it taller */
+    grid-column: span 2;
+    grid-row: span 1;
 }
 
 /* Spanning rule for portrait images */
 .gallery-item.portrait {
-    grid-column: span 1; /* Makes it wider */
-    grid-row: span 2;    /* Keeps it at standard height */
+    grid-column: span 1;
+    grid-row: span 2;
 }
 
 /* Footer */
@@ -214,26 +217,20 @@ footer {
 
 @media (max-width: 1400px) {
     
-    /* Change the header to a vertical layout on mobile */
     header {
         flex-direction: column;
         gap: 20px;
         padding: 20px;
+        padding-top: 80px; /* Retained update: Prevents content from going under the fixed button */
     }
 
-    /* Put the logo back into the normal document flow */
     .logo {
         position: static;
         transform: none;
     }
 
-    /* Put the theme switcher back into the normal flow */
-    #theme-switcher {
-        position: static;
-        transform: none;
-    }
+    /* The theme switcher rule for mobile is no longer needed here */
 
-    /* Adjust gallery for better mobile viewing */
     .gallery {
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
         grid-auto-rows: 250px;
@@ -243,6 +240,8 @@ footer {
 
     /* On mobile, make all gallery items take up a single block */
     .gallery-item.landscape,
+    .gallery-item.landscape2,
+    .gallery-item.landscape3,
     .gallery-item.portrait {
         grid-column: span 1;
         grid-row: span 1;
