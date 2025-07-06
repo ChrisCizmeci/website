@@ -18,4 +18,11 @@ document.addEventListener('DOMContentLoaded', () => {
             localStorage.removeItem('theme');
         }
     });
+
+    // NEW: Logic for toggling the logo name
+    const logo = document.querySelector('.logo');
+    logo.addEventListener('click', (event) => {
+        event.preventDefault(); // Prevents the link from jumping to the top of the page
+        logo.classList.toggle('toggled');
+    });
 });
