@@ -49,17 +49,42 @@ nav a {
 
 /* Position logo on the left */
 .logo {
+    font-size: 1.75em;
     position: absolute;
-    left: 50px;
+    left: 25px;
     top: 50%;
     transform: translateY(-50%);
+    cursor: pointer; /* Make it clear the logo is clickable */
 }
 
 .logo a {
-    font-size: 1.75em;
     font-weight: 500;
     text-decoration: none;
     color: inherit;
+    position: relative; /* Create a positioning context for the names */
+    display: inline-block;
+}
+
+/* NEW: Styles for the name toggle */
+.logo .name-en,
+.logo .name-hy {
+    transition: opacity 0.1s ease-in-out;
+}
+
+.logo .name-hy {
+    font-family: "Noto Serif Armenian", serif;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0; /* Hidden by default */
+}
+
+.logo.toggled .name-en {
+    opacity: 0; /* Hide English name when toggled */
+}
+
+.logo.toggled .name-hy {
+    opacity: 1; /* Show Armenian name when toggled */
 }
 
 /* Position theme switcher on the right */
@@ -71,7 +96,7 @@ nav a {
     width: 32px;
     height: 32px;
     position: absolute;
-    right: 50px;
+    right: 15px;
     top: 50%;
     transform: translateY(-50%);
 }
@@ -82,7 +107,7 @@ nav a {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    transition: opacity 0.3s ease-in-out;
+    transition: opacity 0.1s ease-in-out;
     color: inherit;
     font-size: 28px;
 }
@@ -95,11 +120,9 @@ body.dark-mode #theme-switcher .sun-icon {
     opacity: 0;
 }
 
-/* MODIFIED RULE FOR MOON ICON */
 body.dark-mode #theme-switcher .moon-icon {
     opacity: 1;
     color: #ffffff;
-    /* The font-variation-settings rule has been removed to use the default outline style */
 }
 
 /* Hero Section */
@@ -111,19 +134,33 @@ body.dark-mode #theme-switcher .moon-icon {
 .hero h1 {
     font-size: 3em;
     margin: 0;
-    font-weight: 500;
+    font-weight: 600;
+    color: #255dc4; /* Navy blue for light mode */
+    transition: color 0.3s ease-in-out;
+}
+
+/* New rule for h1 in dark mode */
+body.dark-mode .hero h1 {
+    color: #e6785c; /* Pastel peach for dark mode */
 }
 
 .hero p {
-    font-weight: 300;
-    font-style: normal;
+    font-weight: 500;
+    font-style: italic;
     font-size: 1.5rem;
+    color: #e6785c; /* Navy blue for light mode */
+    transition: color 0.3s ease-in-out;
+}
+
+body.dark-mode .hero p {
+    color: #5282d9; /* Pastel peach for dark mode */
 }
 
 /* Asymmetric Gallery */
 .gallery {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-auto-rows: 300px;
     gap: 20px;
     padding: 20px;
 }
@@ -140,18 +177,33 @@ body.dark-mode #theme-switcher .moon-icon {
     display: block;
 }
 
-/* Spanning items for the asymmetric look */
-.gallery-item:nth-child(2) {
-    grid-column: span 2;
+/* Spanning rule for landscape images */
+.gallery-item.landscape {
+    grid-column: span 2; /* Makes it wider */
+    grid-row: span 2;    /* Makes it taller */
 }
 
-.gallery-item:nth-child(4) {
-    grid-row: span 2;
+.gallery-item.landscape2 {
+    grid-column: span 1; /* Makes it wider */
+    grid-row: span 1;    /* Makes it taller */
+}
+
+.gallery-item.landscape3 {
+    grid-column: span 2; /* Makes it wider */
+    grid-row: span 1;    /* Makes it taller */
+}
+
+/* Spanning rule for portrait images */
+.gallery-item.portrait {
+    grid-column: span 1; /* Makes it wider */
+    grid-row: span 2;    /* Keeps it at standard height */
 }
 
 /* Footer */
 footer {
     text-align: center;
-    padding: 20px;
-    margin-top: 50px;
+    padding: 0px;
+    margin-top: 0px;
+    margin-bottom: 35px;
+    font-size: 1.35em;
 }
